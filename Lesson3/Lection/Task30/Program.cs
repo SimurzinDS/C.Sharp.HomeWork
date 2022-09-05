@@ -3,11 +3,12 @@
 
 void FillArray(int[] collection)
 {
+    Random random = new Random();
     int length = collection.Length;
     int index = 0;
     while (index < length)
     {
-        collection[index] = new Random().Next(0, 2);
+        collection[index] = random.Next(0, 2);
         index++;
     }
 }
@@ -23,6 +24,6 @@ void PrintArray(int[] col)
     }
 }
 
-int [] array = new int[8];
+int[] array = new int[8];
 FillArray(array);
 PrintArray(array);
