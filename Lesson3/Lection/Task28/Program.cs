@@ -7,11 +7,22 @@ bool isNumber = int.TryParse(Console.ReadLine(), out int number);
 int GetFactorial(int arg)
 {
     int result = 1;
-    for (int i = 1; i <= number; i++)
+    if(arg > 0)
     {
-        result = result * i;
+        for (int i = 1; i <= number; i++)
+        {
+            result = result * i;
+        }
+        return result;
     }
-    return result;
+    else
+    {
+        for (int i = -1; i >= number; i--)
+        {
+            result = result * i;
+        }
+        return result;
+    }
 }
 
 int Sum = GetFactorial(number);
