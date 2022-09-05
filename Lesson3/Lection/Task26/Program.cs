@@ -5,7 +5,7 @@
 
 bool isNumber = int.TryParse(Console.ReadLine(), out int number);
 
-if(isNumber != true)
+if(!isNumber)
 {
     Console.WriteLine("Введите число");
     return;
@@ -13,9 +13,18 @@ if(isNumber != true)
 
 int GetDigitsNumber(int arg)
 {
-    string str = Convert.ToString(arg);
-    int result = str.Length;
-    return result;
+    int count = 0;
+    // int count2 = 0;
+    if(arg == 0)
+    {
+        return 1;
+    }
+    while( arg != 0)
+    {
+        count++;
+        arg = arg / 10;
+    }
+    return count;
 }
 
 int digitsNumber = GetDigitsNumber(number);

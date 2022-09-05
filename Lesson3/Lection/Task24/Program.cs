@@ -1,6 +1,6 @@
 ﻿bool isNumber = int.TryParse(Console.ReadLine(), out int number);
 
-if (isNumber == false)
+if (!isNumber)
 {
     Console.WriteLine("Is not number");
     return;
