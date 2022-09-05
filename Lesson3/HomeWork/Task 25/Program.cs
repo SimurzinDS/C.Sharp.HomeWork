@@ -12,7 +12,10 @@ if (!firstNumber || !secondNumber)
     Console.WriteLine("Одно из чисел не является числом");
 }
 
-
+if(number2 < 0)
+{
+    Console.WriteLine("Число B не является натуральным числом");
+}
 
 int GetMathPow(int arg1, int arg2)
 {
