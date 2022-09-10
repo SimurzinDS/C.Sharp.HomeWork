@@ -1,34 +1,54 @@
 ﻿// Задача 34: Задайте массив заполненный случайными положительными трехзначными числами.
 // Напишите программу, которая покажет количество четных чисел в массиве.
 // [345, 897, 568, 234] => 2
-Console.WriteLine("Введите размер массива:  ");
-int size = Convert.ToInt32(Console.ReadLine());
-int[] numbers = new int[size];
-FillArrayRandomNumbers(numbers);
-Console.WriteLine("массив: ");
-PrintArray(numbers);
-int count = 0;
 
-for (int z = 0; z < numbers.Length; z++)
-if (numbers[z] % 2 == 0)
-count++;
-
-Console.WriteLine($"всего {numbers.Length} чисел, {count} из них чётные");
-
-void FillArrayRandomNumbers(int[] numbers)
+void FillArray(int[] collection)
 {
-    for(int i = 0; i < numbers.Length; i++)
+    int length = collection.Length;
+    int index = 0;
+    while (index < length)
     {
-        numbers[i] = new Random().Next(100,1000);
+        collection[index] = new Random().Next(100, 1000);
+        index++;
     }
 }
-void PrintArray(int[] numbers)
+
+void PrintArray(int[] col)
 {
-    Console.Write("[ ");
-    for(int i = 0; i < numbers.Length; i++)
+    int count = col.Length;
+    int position = 0;
+    Console.Write("[");
+    while (position < count)
     {
-        Console.Write(numbers[i] + " ");
+        if (position + 1  != count)
+        {
+            Console.Write($"{col[position]}, ");
+        }
+        else
+        {
+            Console.Write($"{col[position]}");
+        }
+        position++;
     }
     Console.Write("]");
-    Console.WriteLine();
 }
+
+int GetEvenNumbers(int []arr)
+{
+    int count = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if(arr[i] % 2 == 0)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+int [] array = new int[new Random().Next(1, 10)];
+
+FillArray(array);
+PrintArray(array);
+int result = GetEvenNumbers(array);
+Console.Write($" => {result}");
