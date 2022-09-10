@@ -1,30 +1,63 @@
-﻿// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-// [3 7 22 2 78] -> 76
+﻿//   Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+//   [3 7 22 2 78] -> 76
 
-Console.WriteLine($"\nЗадача 38. Найдите разницу между максимальным и минимальным элементов массива из вещественных чисел:\n");
-
-double[] arrayRealNumbers = new double[10];
-  for (int i = 0; i < arrayRealNumbers.Length; i++ )
-  {
-    arrayRealNumbers[i] = new Random().Next(1, 10);
-    Console.Write(arrayRealNumbers[i] + " ");
-  }
-
-double maxNumber = arrayRealNumbers[0];
-double minNumber = arrayRealNumbers[0];
-
-  for (int i = 1; i < arrayRealNumbers.Length; i++)
-  {
-    if (maxNumber < arrayRealNumbers[i])
+void FillArray(double[] collection)
+{
+    double length = collection.Length;
+    int index = 0;
+    while (index < length)
     {
-      maxNumber = arrayRealNumbers[i];
+        collection[index] = Math.Round((new Random().NextDouble() * 100), 2);
+        index++;
     }
-        if (minNumber > arrayRealNumbers[i])
+}
+
+void PrintArray(double[] col)
+{
+    int count = col.Length;
+    int position = 0;
+    Console.Write("[");
+    while (position < count)
     {
-      minNumber = arrayRealNumbers[i];
+        if (position + 1 != count)
+        {
+            Console.Write($"{col[position]} ; ");
+        }
+        else
+        {
+            Console.Write($"{col[position]}");
+        }
+        position++;
     }
-  }
+    Console.Write("]");
+}
 
-  double decision = maxNumber - minNumber;
+double[] array = new double[new Random().Next(2, 10)];
+FillArray(array);
+PrintArray(array);
 
-  Console.WriteLine($"\nразница между между максимальным ({maxNumber}) и минимальным({minNumber}) элементами: {decision}");
+double GetDifferenceMinMax(double[] arr)
+{
+    double maxNumber = arr[0];
+    double minNumber = arr[0];
+    
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if(maxNumber < arr[i])
+        {
+           maxNumber = arr[i];
+        }
+
+        if(minNumber > arr[i])
+        {
+           minNumber = arr[i];
+        }
+    }
+    
+    double diffMaxMin = maxNumber - minNumber;
+
+    return diffMaxMin;
+}
+
+double result = GetDifferenceMinMax(array);
+Console.Write($" -> {result}");
