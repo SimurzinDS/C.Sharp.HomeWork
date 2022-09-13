@@ -4,6 +4,7 @@ bool isNumber = int.TryParse(Console.ReadLine(), out int x);
 if(isNumber == false)
 {
     Console.WriteLine($"это не десятичное число!");
+    return;
 }
 
 string GetBinareNumber(int arg)
