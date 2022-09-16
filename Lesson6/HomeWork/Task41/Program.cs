@@ -1,24 +1,32 @@
-﻿Console.Write("Введите числа через запятую: ");
-int[] numbers = StringToNum(Console.ReadLine());
-PrintArray(numbers);
-int sum = 0;
-for (int i = 0; i < numbers.Length; i++)
+﻿// Пользователь вводит с клавиатуры M чисел. 
+// Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// 0, 7, 8, -2, -2 -> 2
+// 1, -7, 567, 89, 223-> 3
+
+Console.Write("Введите числа через запятую: ");
+string? numbers = Console.ReadLine();
+
+int GetCountPositive(int[] mas)
 {
-    if (numbers[i] > 0)
+    int sum = 0;
+    for (int i = 0; i < mas.Length; i++)
     {
-        sum++;
+        if (mas[i] > 0)
+        {
+            sum++;
+        }
     }
+    return sum;
 }
-Console.WriteLine();
-Console.WriteLine($"количество значений больше 0 = {sum}");
 
 
-int[] StringToNum(string input)
+
+int[] StringToNum(string mas)
 {
     int count = 1;
-    for (int i = 0; i < input.Length; i++)
+    for (int i = 0; i < mas.Length; i++)
     {
-        if (input[i] == ',')
+        if (mas[i] == ',')
         {
             count++;
         }
@@ -27,20 +35,20 @@ int[] StringToNum(string input)
     int[] numbers = new int [count];
     int index = 0;
 
-    for (int i = 0; i < input.Length; i++)
+    for (int i = 0; i < mas.Length; i++)
     {
         string temp = "";
 
-        while (input [i] != ',')
+        while (mas [i] != ',')
         {
-        if(i != input.Length - 1)
+        if(i != mas.Length - 1)
         {
-            temp += input [i].ToString();
+            temp += mas [i].ToString();
             i++;
         }
         else
         {
-            temp += input [i].ToString();
+            temp += mas [i].ToString();
             break;
         }
         }
@@ -51,12 +59,26 @@ int[] StringToNum(string input)
 }
 
 
-void PrintArray(int[] array)
+void PrintArray(int[] col)
 {
-    Console.Write("[ ");
-    for (int i = 0; i < array.Length; i++)
+    int count = col.Length;
+    int position = 0;
+    Console.Write("[");
+    while (position < count)
     {
-        Console.Write(array[i] + " ");
+        if (position + 1  != count)
+        {
+            Console.Write($"{col[position]}, ");
+        }
+        else
+        {
+            Console.Write($"{col[position]}");
+        }
+        position++;
     }
     Console.Write("]");
 }
+
+PrintArray(StringToNum(numbers));
+int result = GetCountPositive(StringToNum(numbers));
+Console.Write($" => {result}");
